@@ -1,7 +1,9 @@
 package main
 
 import (
-	"github.com/ortizdavid/reflection-golang/core"
+	"fmt"
+
+	"github.com/ortizdavid/reflect-golang/core"
 )
 
 
@@ -14,6 +16,19 @@ func main() {
 		Quantity: 2,
 	}
 
-	product.ShowData("string")
+	fmt.Println("Object ")
+	product.ShowData("xml")
+	
+	///--- Reflection
+	var productReflect core.ProductReflect
+
+	fmt.Println("Fields")
+	productReflect.GetFields(product)
+
+	fmt.Println("Methods")
+	productReflect.GetMethods(product)
+
+	fmt.Println("Public Methods")
+	productReflect.GetMethods(product)
 
 }
