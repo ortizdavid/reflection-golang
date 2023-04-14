@@ -17,15 +17,16 @@ func main() {
 		Height: 100.1,
 		Width: 98.3,
 	}
-	///--- Reflection--------------------------
 	var reflection core.Reflection
 
 	fmt.Println("Inspecting 1st object")
 	reflection.Inspect(product)
+	fmt.Println("\nInspecting Fields")
+	reflection.InspectFields(product)
 	fmt.Println("\nCalling Method 'ShowData' with 'Json':")
 	reflection.CallMethod(&product, "ShowData", "json")
 
-	fmt.Println("------------------------------------------------")
+	fmt.Println("\n==============================================================================")
 	fmt.Println("Inspecting 2nd object")
 	reflection.Inspect(polygon)
 	field := "Width"
@@ -35,6 +36,7 @@ func main() {
 	fmt.Println("\nCalling Method 'Verify':")
 	reflection.CallMethod(&polygon, "Verify", 100.1, 98.3)
 
-	fmt.Println("\nCounting Primitive Types:")
+	fmt.Println("\n==============================================================================")
+	fmt.Println("Counting Primitive Types:")
 	reflection.CountPrimitiveTypes(1, 11, 34, 0.9, 1.5, "Hello", "Go", true, false, map[string]interface{}{"x": 12})
 }

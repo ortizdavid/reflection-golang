@@ -58,6 +58,18 @@ func (ref *Reflection) Inspect(obj interface{})  {
 	fmt.Print("\nType Name: ", reflect.TypeOf(obj).Name())
 	fmt.Print("\nAttributes: ", ref.getFields(obj))
 	fmt.Print("\nPublic Methods: ", ref.getPublicMethods(obj))
+	fmt.Println()
+}
+
+func (ref *Reflection) InspectFields(obj interface{})  {
+	objType := reflect.TypeOf(obj)
+	objVal := reflect.ValueOf(obj)
+	numFields := objType.NumField()
+	fmt.Println("Num. of fields: ", numFields)
+	fmt.Println("Field\tValue\tKind")
+	for i := 0; i < numFields; i++ {
+		fmt.Printf("%s\t%#v\t%v\n", objType.Field(i).Name, objVal.Field(i), objVal.Field(i).Kind())
+	}
 }
 
 func (ref *Reflection) CountPrimitiveTypes(elements ...interface{}) {
